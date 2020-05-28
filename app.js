@@ -29,12 +29,12 @@ function error(){
 }
 
 (function getUserLocation(){
-    if(!navigator.geolocation){
-        window.alert('Geolocation is not supported by your browser')
-    }
-    else{
+    // if(!navigator.geolocation){
+    //     window.alert('Geolocation is not supported by your browser')
+    // }
+    // else{
         navigator.geolocation.getCurrentPosition(success, error);
-    }
+    // }
      
 })()
 
