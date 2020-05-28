@@ -12,6 +12,7 @@ function getCurrentWeather(lat, lon){
     fetch(api)
     .then(res => res.json())
     .then(data => renderWeatherData(data)) 
+    .catch(error => error)
 }
 
 function success(position){
