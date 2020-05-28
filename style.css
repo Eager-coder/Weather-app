@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  background-color: #8fddf4;
+  width: 95%;
+  max-width: 550px;
+  height: 500px;
+  margin: 100px auto 0 auto;
+  padding-top: 100px;
+  border-radius: 7px;
+}
+
+main .container {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+}
+
+main .container .left * {
+  color: white;
+}
+
+main .container .left .text-wrapper #city {
+  font-size: 2.5rem;
+}
+
+main .container .left .text-wrapper #date {
+  font-size: 1.2rem;
+}
+
+main .container .left .weather-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .container .left .weather-container .icon-container {
+  width: 150px;
+}
+
+main .container .left .weather-container .icon-container img {
+  width: 100%;
+}
+
+main .container .left .weather-container .weather #temp {
+  font-size: 2.5rem;
+}
+
+main .container .right {
+  margin-top: 100px;
+}
+
+main .container .right * {
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
