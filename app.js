@@ -13,7 +13,7 @@ function getCurrentWeather(lat, lon){
     fetch(proxyurl + api)
     .then(res => res.json())
     .then(data => renderWeatherData(data)) 
-    .catch(error => error)
+    .catch(error => console.log(error))
 }
 
 function success(position){
@@ -29,12 +29,12 @@ function error(){
 }
 
 (function getUserLocation(){
-    // if(!navigator.geolocation){
-    //     window.alert('Geolocation is not supported by your browser')
-    // }
-    // else{
+    if(!navigator.geolocation){
+        window.alert('Geolocation is not supported by your browser')
+    }
+    else{
         navigator.geolocation.getCurrentPosition(success, error);
-    // }
+    }
      
 })()
 
