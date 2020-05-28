@@ -24,7 +24,7 @@ function success(position){
 }
 
 function error(){
-    window.alert('Something went wrong')
+    window.alert('Turn on your geolocation and try again')
     console.log(':(((')
 }
 
