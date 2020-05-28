@@ -14,21 +14,28 @@ function getCurrentWeather(lat, lon){
     .then(data => renderWeatherData(data)) 
 }
 
+function success(position){
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    getCurrentWeather(lat, lon);
+    renderDate()
+}
+
+function error(){
+    window.alert('Something went wrong')
+    console.log(':(((')
+}
 
 (function getUserLocation(){
-    navigator.geolocation.getCurrentPosition(success, error);
-    function success(position){
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        getCurrentWeather(lat, lon);
-        renderDate()
+    if(!navigator.geolocation){
+        window.alert('Geolocation is not supported by your browser')
     }
-    function error(){
-        window.alert('Something went wrong')
-        console.log(':(((')
+    else{
+        navigator.geolocation.getCurrentPosition(success, error);
     }
-    
+     
 })()
+
 
 function renderWeatherData(object){
     console.dir(object)
