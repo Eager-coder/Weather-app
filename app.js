@@ -8,8 +8,9 @@ const wind = document.getElementById('wind');
 
 const key = '7b917939960ee80b1c4416c5e0426a58';
 function getCurrentWeather(lat, lon){
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
-    fetch(api)
+    const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    fetch(proxyurl + api)
     .then(res => res.json())
     .then(data => renderWeatherData(data)) 
     .catch(error => error)
