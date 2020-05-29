@@ -8,7 +8,7 @@ const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 const changeLoc = document.getElementById('change-loc');
 const key = '7b917939960ee80b1c4416c5e0426a58';
-
+window.onload = getUserLocation();
 function getCurrentWeather(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
     .then(res => res.json())
@@ -20,14 +20,13 @@ function success(position){
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
     getCurrentWeather(lat, lon);
-    renderDate()
 }
 
 function error(){
     
 }
 
-(function getUserLocation(){
+function getUserLocation(){
     if(!navigator.geolocation){
         window.alert('Geolocation is not supported by your browser')
     }
@@ -35,34 +34,32 @@ function error(){
         navigator.geolocation.getCurrentPosition(success, error);
     }
      
-})()
+}
 
 cityInput.addEventListener('input', () => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${key}`)
     .then(res => res.json())
-    .then(data => renderByInput(data)) 
+    .then(data => renderWeatherData(data)) 
     .catch(error => console.log(error))
 })
 
+
 function renderWeatherData(object){
+    renderDate();
     city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
     feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';
     humidity.innerText = 'Humidity: ' + object.main.humidity + '%';
     wind.innerText = 'Wind: ' + object.wind.speed + ' m/s';
-    setIcons(object.weather[0].icon)
+    setIcons(object.weather[0].icon);
+    if (object.weather[0].icon[2] === 'n'){
+        document.querySelector('main').style.background = 'linear-gradient( #130c61, darkblue)';
+    }else{
+        document.querySelector('main').style.background = '#7bd8f7';
+    }
 }
 
-function renderByInput(object){
-    city.innerText = object.name + ', ' + object.sys.country;
-    temp.innerText = Math.floor(object.main.temp - 273) + '°C';
-    desc.innerText = object.weather[0].main;
-    feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';
-    humidity.innerText = 'Humidity: ' + object.main.humidity + '%';
-    wind.innerText = 'Wind: ' + object.wind.speed + 'm/s';
-    setIcons(object.weather[0].icon)
-}
 function renderDate(){
     const currentDate = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June",

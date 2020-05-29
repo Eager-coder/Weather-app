@@ -13,7 +13,7 @@
     color: white;
 }
 main{
-    background-color: #8fddf4;
+    background-color: lightblue;
     width: 95%;
     max-width: 550px;
     height: 500px;
@@ -88,8 +88,12 @@ main{
         }
        
         #date{
-            font-size: 1.2rem;
-            justify-self: last baseline;
+            font-size: 1rem;
+            font-weight: 400;
+            width: 100%;
+            @include mobile(){
+                text-align: center;
+            }
         }
     }
     .container{

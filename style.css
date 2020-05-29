@@ -10,7 +10,7 @@
 }
 
 main {
-  background-color: #8fddf4;
+  background-color: lightblue;
   width: 95%;
   max-width: 550px;
   height: 500px;
@@ -108,9 +108,15 @@ main .text-wrapper .loc-container #city {
 }
 
 main .text-wrapper #date {
-  font-size: 1.2rem;
-  -ms-grid-column-align: last baseline;
-      justify-self: last baseline;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 100%;
+}
+
+@media (max-width: 525px) {
+  main .text-wrapper #date {
+    text-align: center;
+  }
 }
 
 main .container {
