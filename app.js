@@ -46,6 +46,7 @@ cityInput.addEventListener('input', () => {
 
 function renderWeatherData(object){
     renderDate();
+    console.dir(object)
     city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
