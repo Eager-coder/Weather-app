@@ -115,6 +115,7 @@ main .text-wrapper #date {
 
 @media (max-width: 525px) {
   main .text-wrapper #date {
+    width: 100vw;
     text-align: center;
   }
 }
