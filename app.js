@@ -45,13 +45,12 @@ cityInput.addEventListener('input', () => {
 })
 
 function renderWeatherData(object){
-    console.dir(object)
     city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
     feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';
     humidity.innerText = 'Humidity: ' + object.main.humidity + '%';
-    wind.innerText = 'Wind: ' + object.wind.speed + 'm/s';
+    wind.innerText = 'Wind: ' + object.wind.speed + ' m/s';
     setIcons(object.weather[0].icon)
 }
 
