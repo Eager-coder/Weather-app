@@ -5,6 +5,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  outline: none;
 }
 
 main {
@@ -64,6 +65,10 @@ main .container .left * {
 
 main .container .left .text-wrapper #city {
   font-size: 2.2rem;
+  width: 150px;
+  color: white;
+  background-color: transparent;
+  border: none;
 }
 
 @media (max-width: 480px) {

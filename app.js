@@ -1,4 +1,4 @@
-const city = document.getElementById('city');
+const cityInput = document.getElementById('city');
 const date = document.getElementById('date');
 const temp = document.getElementById('temp');
 const desc = document.getElementById('desc');
@@ -8,9 +8,9 @@ const wind = document.getElementById('wind');
 
 const key = '7b917939960ee80b1c4416c5e0426a58';
 function getCurrentWeather(lat, lon){
-    const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    fetch(proxyurl + api)
+    fetch( api)
     .then(res => res.json())
     .then(data => renderWeatherData(data)) 
     .catch(error => console.log(error))
@@ -41,7 +41,7 @@ function error(){
 
 function renderWeatherData(object){
     console.dir(object)
-    city.innerText = object.name + ', ' + object.sys.country;
+    cityInput.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
     feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';

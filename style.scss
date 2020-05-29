@@ -9,6 +9,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    outline: none;
 }
 main{
     background-color: #8fddf4;
@@ -45,6 +46,10 @@ main{
                 
                 #city{
                     font-size: 2.2rem;
+                    width: 150px;
+                    color: white;
+                    background-color: transparent;
+                    border: none;
                     @include mobile(){
                         font-size: 1.5rem;
                     }
