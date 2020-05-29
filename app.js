@@ -8,7 +8,7 @@ const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 const changeLoc = document.getElementById('change-loc');
 const key = '7b917939960ee80b1c4416c5e0426a58';
-const btn = document.getElementById('btn');
+
 function getCurrentWeather(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
     .then(res => res.json())
@@ -24,8 +24,7 @@ function success(position){
 }
 
 function error(){
-    window.alert('Turn on your geolocation and try again')
-    console.log(':(((')
+    
 }
 
 (function getUserLocation(){
@@ -38,7 +37,7 @@ function error(){
      
 })()
 
-btn.addEventListener('click', () => {
+cityInput.addEventListener('input', () => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${key}`)
     .then(res => res.json())
     .then(data => renderByInput(data)) 
