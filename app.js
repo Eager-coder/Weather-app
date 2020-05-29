@@ -1,16 +1,16 @@
-const cityInput = document.getElementById('city');
+const cityInput = document.getElementById('change-loc');
+const city = document.getElementById('city');
 const date = document.getElementById('date');
 const temp = document.getElementById('temp');
 const desc = document.getElementById('desc');
 const feelsLike = document.getElementById('feels-like');
 const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
-
+const changeLoc = document.getElementById('change-loc');
 const key = '7b917939960ee80b1c4416c5e0426a58';
+const btn = document.getElementById('btn');
 function getCurrentWeather(lat, lon){
-    const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    fetch( api)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
     .then(res => res.json())
     .then(data => renderWeatherData(data)) 
     .catch(error => console.log(error))
@@ -38,10 +38,16 @@ function error(){
      
 })()
 
+btn.addEventListener('click', () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${key}`)
+    .then(res => res.json())
+    .then(data => renderByInput(data)) 
+    .catch(error => console.log(error))
+})
 
 function renderWeatherData(object){
     console.dir(object)
-    cityInput.innerText = object.name + ', ' + object.sys.country;
+    city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
     feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';
@@ -50,6 +56,15 @@ function renderWeatherData(object){
     setIcons(object.weather[0].icon)
 }
 
+function renderByInput(object){
+    city.innerText = object.name + ', ' + object.sys.country;
+    temp.innerText = Math.floor(object.main.temp - 273) + '°C';
+    desc.innerText = object.weather[0].main;
+    feelsLike.innerText = 'Feels like: ' + (Math.floor(object.main.feels_like) - 273) + '°C';
+    humidity.innerText = 'Humidity: ' + object.main.humidity + '%';
+    wind.innerText = 'Wind: ' + object.wind.speed + 'm/s';
+    setIcons(object.weather[0].icon)
+}
 function renderDate(){
     const currentDate = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June",

@@ -6,6 +6,7 @@
           box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   outline: none;
+  color: white;
 }
 
 main {
@@ -14,7 +15,8 @@ main {
   max-width: 550px;
   height: 500px;
   margin: 100px auto 0 auto;
-  padding-top: 100px;
+  padding: 120px 30px 30px 30px;
+  position: relative;
   border-radius: 7px;
 }
 
@@ -26,6 +28,87 @@ main {
     width: 100%;
     height: 100vh;
   }
+}
+
+main .input-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  position: absolute;
+  top: 135px;
+  right: 30px;
+}
+
+main .input-container .input-box {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  color: #167c9b;
+  background: white;
+  border: 1px white solid;
+  border-radius: 4px;
+  width: 200px;
+  height: 30px;
+}
+
+main .input-container .input-box #change-loc {
+  width: 180px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #167c9b;
+  padding-left: 10px;
+  margin-left: 30px;
+  font-size: 1.1rem;
+}
+
+main .input-container .input-box img {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 5px;
+}
+
+main .text-wrapper {
+  display: block;
+}
+
+main .text-wrapper .loc-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+main .text-wrapper .loc-container #city {
+  font-size: 2.2rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin-right: 50px;
+}
+
+@media (max-width: 480px) {
+  main .text-wrapper .loc-container #city {
+    font-size: 1.5rem;
+  }
+}
+
+main .text-wrapper #date {
+  font-size: 1.2rem;
+  -ms-grid-column-align: last baseline;
+      justify-self: last baseline;
 }
 
 main .container {
@@ -41,7 +124,6 @@ main .container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 30px;
 }
 
 @media (max-width: 480px) {
@@ -57,28 +139,6 @@ main .container {
   main .container .left {
     text-align: center;
   }
-}
-
-main .container .left * {
-  color: white;
-}
-
-main .container .left .text-wrapper #city {
-  font-size: 2.2rem;
-  width: 150px;
-  color: white;
-  background-color: transparent;
-  border: none;
-}
-
-@media (max-width: 480px) {
-  main .container .left .text-wrapper #city {
-    font-size: 1.5rem;
-  }
-}
-
-main .container .left .text-wrapper #date {
-  font-size: 1.2rem;
 }
 
 main .container .left .weather-container {
@@ -129,10 +189,6 @@ main .container .left .weather-container .weather #temp {
   font-size: 2.5rem;
 }
 
-main .container .right {
-  margin-top: 100px;
-}
-
 @media (max-width: 480px) {
   main .container .right {
     margin-top: 30px;
@@ -140,9 +196,5 @@ main .container .right {
   main .container .right .details > div {
     margin: 10px 0;
   }
-}
-
-main .container .right * {
-  color: white;
 }
 /*# sourceMappingURL=style.css.map */
