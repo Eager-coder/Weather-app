@@ -8,7 +8,16 @@ const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 const changeLoc = document.getElementById('change-loc');
 const key = '7b917939960ee80b1c4416c5e0426a58';
+
 window.onload = getUserLocation();
+
+cityInput.addEventListener('input', () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${key}`)
+    .then(res => res.json())
+    .then(data => renderWeatherData(data)) 
+    .catch(error => console.log(error))
+})
+
 function getCurrentWeather(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`)
     .then(res => res.json())
@@ -22,9 +31,7 @@ function success(position){
     getCurrentWeather(lat, lon);
 }
 
-function error(){
-    
-}
+function error(){}
 
 function getUserLocation(){
     if(!navigator.geolocation){
@@ -32,21 +39,11 @@ function getUserLocation(){
     }
     else{
         navigator.geolocation.getCurrentPosition(success, error);
-    }
-     
+    } 
 }
-
-cityInput.addEventListener('input', () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${key}`)
-    .then(res => res.json())
-    .then(data => renderWeatherData(data)) 
-    .catch(error => console.log(error))
-})
-
 
 function renderWeatherData(object){
     renderDate();
-    console.dir(object)
     city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
