@@ -31,28 +31,29 @@ main{
         height: 100vh;
     }
     .input-container{
-        width: max-content;
+        width: 90%;
         height: max-content;
         position: absolute;
-        top: 135px;
-        right: 30px;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
         @include mobile(){
             top: 50px;
             right: 50%;
-            transform: translateX(50%);
+            //transform: translateX(50%);
         }
         .input-box{
             position: relative;
-            width: max-content;
+            width: 100%;
+            height: 30px;
             height: max-content;
             color:#167c9b;
             background: white;
             border: 1px white solid;
             border-radius: 4px;
-            width: 180px;
-            height: 30px;
+           
             #change-loc{
-                width: 180px;
+                width: 100%;
                 height: 30px;
                 border: none;
                 background: transparent;
