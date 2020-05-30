@@ -63,7 +63,7 @@ function renderDate(){
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    date.innerText = dayNames[currentDate.getDay()] + ' ' + (currentDate.getDay() + 1) + ' ' + monthNames[currentDate.getMonth()];
+    date.innerText = dayNames[currentDate.getDay()] + ' ' + (currentDate.getDate() + 1) + ' ' + monthNames[currentDate.getMonth()];
 };
 
 function setIcons(desc){
