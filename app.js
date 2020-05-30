@@ -43,7 +43,8 @@ function getUserLocation(){
 }
 
 function renderWeatherData(object){
-    renderDate();
+    console.dir(object)
+    renderDate(object.dt);
     city.innerText = object.name + ', ' + object.sys.country;
     temp.innerText = Math.floor(object.main.temp - 273) + '°C';
     desc.innerText = object.weather[0].main;
@@ -58,12 +59,18 @@ function renderWeatherData(object){
     }
 }
 
-function renderDate(){
-    const currentDate = new Date();
+function renderDate(unixTimestamp){
+    const currentDate = new Date(unixTimestamp * 1000);
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    date.innerText = dayNames[currentDate.getDay()] + ' ' + (currentDate.getDate() + 1) + ' ' + monthNames[currentDate.getMonth()];
+    if(dayNames[currentDate.getDay()] === undefined){
+        date.innerText = ' ';
+    }else{
+        date.innerText = dayNames[currentDate.getDay()] + ' ' + (currentDate.getDate() + 1) + ' ' + monthNames[currentDate.getMonth()];
+    }
+    
+    
 };
 
 function setIcons(desc){
